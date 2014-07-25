@@ -1,5 +1,7 @@
 # leaflet-terminator
 
+![](https://farm3.staticflickr.com/2930/14556106388_d621a29e8c_z.jpg)
+
 Displays a [solar terminator](http://en.wikipedia.org/wiki/Terminator_(solar))
 on a Leaflet map.
 
