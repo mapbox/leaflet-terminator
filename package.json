@@ -4,7 +4,8 @@
   "description": "show the solar terminator on a leaflet map",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "beefy demo.js",
+    "make": "browserify -s terminator index.js > leaflet-terminator.js"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
   "dependencies": {
     "insert-css": "~0.2.0",
     "spherical": "0.0.1",
-    "leaflet-geodesy": "~0.1.1"
+    "leaflet-geodesy": "0.2.0",
+    "moment": "~2.7.0"
   }
 }

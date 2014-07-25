@@ -3,18 +3,23 @@
  * http://bl.ocks.org/mbostock/4597134
  */
 
-var LGeodesy = require('leaflet-geodesy');
+var LGeodesy = require('leaflet-geodesy'),
+    moment = require('moment');
 
 var pi = Math.PI,
     radians = pi / 180,
     degrees = 180 / pi;
 
-module.exports = function() {
-    return LGeodesy.circle(
-        antipode(solarPosition(new Date()).reverse()),
-        (pi * Math.pow(6378137, 2)) / 2, {
-        parts: 100
-    });
+module.exports = function(date) {
+    var circle = LGeodesy.circle([0, 0],
+        (pi * Math.pow(6378137, 2)) / 2, { parts: 100 });
+
+    circle.setDate = function(date) {
+        circle.setLatLng(L.latLng(antipode(solarPosition(date).reverse())).wrap());
+        return circle;
+    };
+
+    return circle.setDate(date || new Date());
 };
 
 function antipode(position) {
@@ -23,7 +28,7 @@ function antipode(position) {
 
 function solarPosition(time) {
     var centuries = (time - Date.UTC(2000, 0, 1, 12)) / 864e5 / 36525, // since J2000
-        // longitude = (d3.time.day.utc.floor(time) - time) / 864e5 * 360 - 180;
+        longitude = (moment.utc(time).startOf('day').toDate() - time) / 864e5 * 360 - 180;
         longitude = (-58178199) / 864e5 * 360 - 180;
     return [
         longitude - equationOfTime(centuries) * degrees,
@@ -36,10 +41,10 @@ function solarPosition(time) {
 
 function equationOfTime(centuries) {
     var e = eccentricityEarthOrbit(centuries),
-    m = solarGeometricMeanAnomaly(centuries),
-    l = solarGeometricMeanLongitude(centuries),
-    y = Math.tan(obliquityCorrection(centuries) / 2);
-    y *= y;
+        m = solarGeometricMeanAnomaly(centuries),
+        l = solarGeometricMeanLongitude(centuries),
+        y = Math.tan(obliquityCorrection(centuries) / 2);
+        y *= y;
     return y * Math.sin(2 * l) -
         2 * e * Math.sin(m) +
         4 * e * y * Math.sin(m) * Math.cos(2 * l) -

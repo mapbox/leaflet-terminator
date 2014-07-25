@@ -14,4 +14,9 @@ var map = L.map(div)
     .addLayer(L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'))
     .setView([0, 0], 2);
 
-terminator().addTo(map);
+var term = terminator()
+    .setStyle({
+        weight: 1,
+        color: '#000',
+        fill: '#000'
+    }).addTo(map);
