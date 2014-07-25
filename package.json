@@ -1,0 +1,40 @@
+{
+  "name": "leaflet-terminator",
+  "version": "0.0.0",
+  "description": "show the solar terminator on a leaflet map",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mapbox/leaflet-terminator.git"
+  },
+  "browserify": {
+    "transform": [
+      "brfs"
+    ]
+  },
+  "keywords": [
+    "leaflet",
+    "solar",
+    "terminator"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mapbox/leaflet-terminator/issues"
+  },
+  "homepage": "https://github.com/mapbox/leaflet-terminator",
+  "devDependencies": {
+    "beefy": "~2.1.0",
+    "leaflet": "~0.7.3",
+    "brfs": "1.1.0",
+    "watchify": "~1.0.0"
+  },
+  "dependencies": {
+    "insert-css": "~0.2.0",
+    "spherical": "0.0.1",
+    "leaflet-geodesy": "~0.1.1"
+  }
+}
