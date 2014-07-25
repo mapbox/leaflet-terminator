@@ -28,3 +28,10 @@ If you want to use it with browserify, use npm.
 If you have a patch to contribute, change things in `index.js` or in one of the
 dependency files. `leaflet-terminator.js` is a built file, **do not change it:**
 your changes will be overwritten.
+
+## See Also
+
+This is totally cribbed from [Mike Bostock's example](ttp://bl.ocks.org/mbostock/4597134), which
+is itself cribbed from science. Under the hood lie a bunch of libraries that you
+can use separately, like [leaflet-geodesy](https://github.com/mapbox/leaflet-geodesy)
+and [spherical](https://github.com/mapbox/spherical).
