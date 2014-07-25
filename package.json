@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "beefy demo.js",
-    "make": "browserify -s terminator index.js > leaflet-terminator.js"
+    "make": "browserify -s terminator index.js | uglifyjs -c -m > leaflet-terminator.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,8 @@
     "beefy": "~2.1.0",
     "leaflet": "~0.7.3",
     "brfs": "1.1.0",
-    "watchify": "~1.0.0"
+    "watchify": "~1.0.0",
+    "uglifyjs": "~2.3.6"
   },
   "dependencies": {
     "insert-css": "~0.2.0",
