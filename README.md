@@ -31,7 +31,7 @@ your changes will be overwritten.
 
 ## See Also
 
-This is totally cribbed from [Mike Bostock's example](ttp://bl.ocks.org/mbostock/4597134), which
+This is totally cribbed from [Mike Bostock's example](http://bl.ocks.org/mbostock/4597134), which
 is itself cribbed from science. Under the hood lie a bunch of libraries that you
 can use separately, like [leaflet-geodesy](https://github.com/mapbox/leaflet-geodesy)
 and [spherical](https://github.com/mapbox/spherical).
