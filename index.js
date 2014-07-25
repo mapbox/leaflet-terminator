@@ -29,7 +29,6 @@ function antipode(position) {
 function solarPosition(time) {
     var centuries = (time - Date.UTC(2000, 0, 1, 12)) / 864e5 / 36525, // since J2000
         longitude = (moment.utc(time).startOf('day').toDate() - time) / 864e5 * 360 - 180;
-        longitude = (-58178199) / 864e5 * 360 - 180;
     return [
         longitude - equationOfTime(centuries) * degrees,
         solarDeclination(centuries) * degrees
