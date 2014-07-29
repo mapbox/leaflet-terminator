@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "spherical": "0.0.1",
-    "leaflet-geodesy": "0.2.0",
+    "leaflet-geodesy": "0.2.1",
     "moment": "~2.7.0"
   }
 }
