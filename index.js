@@ -12,10 +12,10 @@ var pi = Math.PI,
 
 module.exports = function(date) {
     var circle = LGeodesy.circle([0, 0],
-        (pi * Math.pow(6378137, 2)) / 2, { parts: 100 });
+        pi * 6378137 / 2, { parts: 100 });
 
     circle.setDate = function(date) {
-        circle.setLatLng(L.latLng(antipode(solarPosition(date).reverse())).wrap());
+        circle.setLatLng( L.latLng( antipode( solarPosition(date) ).reverse() ).wrap());
         return circle;
     };
 
