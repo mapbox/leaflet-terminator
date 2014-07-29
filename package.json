@@ -32,10 +32,10 @@
     "leaflet": "~0.7.3",
     "brfs": "1.1.0",
     "watchify": "~1.0.0",
+    "insert-css": "~0.2.0",
     "uglifyjs": "~2.3.6"
   },
   "dependencies": {
-    "insert-css": "~0.2.0",
     "spherical": "0.0.1",
     "leaflet-geodesy": "0.2.0",
     "moment": "~2.7.0"
