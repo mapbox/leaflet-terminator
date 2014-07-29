@@ -15,7 +15,7 @@ module.exports = function(date) {
         pi * 6378137 / 2, { parts: 100 });
 
     circle.setDate = function(date) {
-        circle.setLatLng(L.latLng(antipode(solarPosition(date).reverse())).wrap());
+        circle.setLatLng( L.latLng( antipode( solarPosition(date) ).reverse() ).wrap());
         return circle;
     };
 
