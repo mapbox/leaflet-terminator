@@ -4,7 +4,7 @@
  */
 
 var LGeodesy = require('leaflet-geodesy'),
-    moment = require('moment');
+    startOfDay = require('date-fns/start_of_day');
 
 var pi = Math.PI,
     radians = pi / 180,
@@ -22,13 +22,17 @@ module.exports = function(date) {
     return circle.setDate(date || new Date());
 };
 
+function convertToUTC(date) {
+    return new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds()));
+}
+
 function antipode(position) {
     return [position[0] + 180, -position[1]];
 }
 
 function solarPosition(time) {
     var centuries = (time - Date.UTC(2000, 0, 1, 12)) / 864e5 / 36525, // since J2000
-        longitude = (moment.utc(time).startOf('day').toDate() - time) / 864e5 * 360 - 180;
+        longitude = (convertToUTC(startOfDay(new Date())) - time) / 864e5 * 360 - 180;
     return [
         longitude - equationOfTime(centuries) * degrees,
         solarDeclination(centuries) * degrees
