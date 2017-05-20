@@ -33,11 +33,11 @@
     "brfs": "1.1.0",
     "watchify": "~1.0.0",
     "insert-css": "~0.2.0",
-    "uglifyjs": "~2.3.6"
+    "uglifyjs": "~2.4.10"
   },
   "dependencies": {
-    "spherical": "0.0.1",
+    "date-fns": "^1.28.5",
     "leaflet-geodesy": "0.2.1",
-    "moment": "~2.7.0"
+    "spherical": "0.0.1"
   }
 }
