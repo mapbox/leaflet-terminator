@@ -3,8 +3,7 @@
  * http://bl.ocks.org/mbostock/4597134
  */
 
-var LGeodesy = require('leaflet-geodesy'),
-    moment = require('moment');
+var LGeodesy = require('leaflet-geodesy');
 
 var pi = Math.PI,
     radians = pi / 180,
@@ -26,9 +25,9 @@ function antipode(position) {
     return [position[0] + 180, -position[1]];
 }
 
-function solarPosition(time) {
-    var centuries = (time - Date.UTC(2000, 0, 1, 12)) / 864e5 / 36525, // since J2000
-        longitude = (moment.utc(time).startOf('day').toDate() - time) / 864e5 * 360 - 180;
+function solarPosition(date) {
+    var centuries = (date - Date.UTC(2000, 0, 1, 12)) / 864e5 / 36525, // since J2000
+        longitude = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - date) / 864e5 * 360 - 180;
     return [
         longitude - equationOfTime(centuries) * degrees,
         solarDeclination(centuries) * degrees
