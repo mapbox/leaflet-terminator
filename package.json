@@ -1,11 +1,11 @@
 {
   "name": "leaflet-terminator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "show the solar terminator on a leaflet map",
   "main": "index.js",
   "browser": "leaflet-terminator.js",
   "scripts": {
-    "build": "rollup -c"
+    "prepare": "rollup -c"
   },
   "repository": {
     "type": "git",
