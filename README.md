@@ -20,10 +20,10 @@ Recalculate the terminator to a given [JavaScript Date object](http://www.w3scho
 
 ## Using it
 
-This is built with [browserify](http://browserify.org/). If you want a **standalone javascript file or UMD module**,
+This is built with [rollup](http://rollupjs.org/). If you want a **standalone javascript file or UMD module**,
 download `leaflet-terminator.js`.
 
-If you want to use it with browserify, use npm.
+If you want to use it with modules, use npm.
 
 If you have a patch to contribute, change things in `index.js` or in one of the
 dependency files. `leaflet-terminator.js` is a built file, **do not change it:**

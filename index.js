@@ -9,12 +9,16 @@ var pi = Math.PI,
     radians = pi / 180,
     degrees = 180 / pi;
 
-module.exports = function(date) {
+/**
+ * 
+ * @param {Date?} date 
+ */
+module.exports = function (date) {
     var circle = LGeodesy.circle([0, 0],
         pi * 6378137 / 2, { parts: 100 });
 
-    circle.setDate = function(date) {
-        circle.setLatLng( L.latLng( antipode( solarPosition(date) ).reverse() ).wrap());
+    circle.setDate = function (date) {
+        circle.setLatLng(L.latLng(antipode(solarPosition(date)).reverse()).wrap());
         return circle;
     };
 
@@ -42,7 +46,7 @@ function equationOfTime(centuries) {
         m = solarGeometricMeanAnomaly(centuries),
         l = solarGeometricMeanLongitude(centuries),
         y = Math.tan(obliquityCorrection(centuries) / 2);
-        y *= y;
+    y *= y;
     return y * Math.sin(2 * l) -
         2 * e * Math.sin(m) +
         4 * e * y * Math.sin(m) * Math.cos(2 * l) -
@@ -74,8 +78,8 @@ function solarGeometricMeanLongitude(centuries) {
 function solarEquationOfCenter(centuries) {
     var m = solarGeometricMeanAnomaly(centuries);
     return (Math.sin(m) * (1.914602 - centuries * (0.004817 + 0.000014 * centuries)) +
-            Math.sin(m + m) * (0.019993 - 0.000101 * centuries) +
-            Math.sin(m + m + m) * 0.000289) * radians;
+        Math.sin(m + m) * (0.019993 - 0.000101 * centuries) +
+        Math.sin(m + m + m) * 0.000289) * radians;
 }
 
 function obliquityCorrection(centuries) {
