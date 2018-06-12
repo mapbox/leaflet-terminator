@@ -3,19 +3,22 @@
  * http://bl.ocks.org/mbostock/4597134
  */
 
-var LGeodesy = require('leaflet-geodesy'),
-    moment = require('moment');
+var LGeodesy = require('leaflet-geodesy');
 
 var pi = Math.PI,
     radians = pi / 180,
     degrees = 180 / pi;
 
-module.exports = function(date) {
+/**
+ * 
+ * @param {Date?} date 
+ */
+module.exports = function (date) {
     var circle = LGeodesy.circle([0, 0],
         pi * 6378137 / 2, { parts: 100 });
 
-    circle.setDate = function(date) {
-        circle.setLatLng( L.latLng( antipode( solarPosition(date) ).reverse() ).wrap());
+    circle.setDate = function (date) {
+        circle.setLatLng(L.latLng(antipode(solarPosition(date)).reverse()).wrap());
         return circle;
     };
 
@@ -26,9 +29,9 @@ function antipode(position) {
     return [position[0] + 180, -position[1]];
 }
 
-function solarPosition(time) {
-    var centuries = (time - Date.UTC(2000, 0, 1, 12)) / 864e5 / 36525, // since J2000
-        longitude = (moment.utc(time).startOf('day').toDate() - time) / 864e5 * 360 - 180;
+function solarPosition(date) {
+    var centuries = (date - Date.UTC(2000, 0, 1, 12)) / 864e5 / 36525, // since J2000
+        longitude = (Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) - date) / 864e5 * 360 - 180;
     return [
         longitude - equationOfTime(centuries) * degrees,
         solarDeclination(centuries) * degrees
@@ -43,7 +46,7 @@ function equationOfTime(centuries) {
         m = solarGeometricMeanAnomaly(centuries),
         l = solarGeometricMeanLongitude(centuries),
         y = Math.tan(obliquityCorrection(centuries) / 2);
-        y *= y;
+    y *= y;
     return y * Math.sin(2 * l) -
         2 * e * Math.sin(m) +
         4 * e * y * Math.sin(m) * Math.cos(2 * l) -
@@ -75,8 +78,8 @@ function solarGeometricMeanLongitude(centuries) {
 function solarEquationOfCenter(centuries) {
     var m = solarGeometricMeanAnomaly(centuries);
     return (Math.sin(m) * (1.914602 - centuries * (0.004817 + 0.000014 * centuries)) +
-            Math.sin(m + m) * (0.019993 - 0.000101 * centuries) +
-            Math.sin(m + m + m) * 0.000289) * radians;
+        Math.sin(m + m) * (0.019993 - 0.000101 * centuries) +
+        Math.sin(m + m + m) * 0.000289) * radians;
 }
 
 function obliquityCorrection(centuries) {
